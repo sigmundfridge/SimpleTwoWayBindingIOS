@@ -29,6 +29,12 @@ public class Observable<ObservedType> {
         self.observers.append(observer)
     }
     
+    public func unbind(observer: @escaping Observer) {
+        for obs in observers {
+        }
+        self.observers = []
+    }
+
     private func notifyObservers(_ value: ObservedType) {
         self.observers.forEach { [unowned self](observer) in
             observer(self, value)

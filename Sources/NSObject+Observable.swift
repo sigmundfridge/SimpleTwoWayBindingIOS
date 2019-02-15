@@ -15,4 +15,10 @@ extension NSObject {
             }
         }
     }
+
+    public func unobserve<T>(for observable: Observable<T>, with: @escaping (T) -> ()) {
+        observable.unbind { observable, value in
+            with(value)
+        }
+    }
 }

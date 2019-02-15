@@ -21,26 +21,26 @@ fileprivate struct AssociatedKeys {
 
 extension Bindable where Self: NSObject {
 
-    private var binder: Observable<BindingType> {
+    private var binder: Observable<BindingType>? {
         get {
             guard let value = objc_getAssociatedObject(self, &AssociatedKeys.binder) as? Observable<BindingType> else {
                 let newValue = Observable<BindingType>()
-                objc_setAssociatedObject(self, &AssociatedKeys.binder, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &AssociatedKeys.binder, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
                 return newValue
             }
             return value
         }
         set(newValue) {
-             objc_setAssociatedObject(self, &AssociatedKeys.binder, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &AssociatedKeys.binder, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }
     }
     
     public func getBinderValue() -> BindingType? {
-        return binder.value
+        return binder?.value
     }
     
     public func setBinderValue(with value: BindingType?) {
-        binder.value = value
+        binder?.value = value
     }
     
     public func register(for observable: Observable<BindingType>) {
@@ -48,7 +48,7 @@ extension Bindable where Self: NSObject {
     }
     
     func valueChanged() {
-        if binder.value != self.observingValue() {
+        if binder?.value != self.observingValue() {
             setBinderValue(with: self.observingValue())
         }
     }
@@ -63,6 +63,15 @@ extension Bindable where Self: NSObject {
         }
         self.observe(for: observable) { (value) in
             self.updateValue(with: value)
+        }
+    }
+    
+    public func unbind(from observable: Observable<BindingType>) {
+        objc_setAssociatedObject(self, &AssociatedKeys.binder, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+        if let _self = self as? UIControl {
+            _self.removeTarget(Selector, action: Selector{ [weak self] in self?.valueChanged() }, for: [.editingChanged, .valueChanged])
+        }
+        self.unobserve(for: observable) { value in
         }
     }
     

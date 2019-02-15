@@ -22,6 +22,8 @@ class ViewController: UIViewController {
             commentsView.layer.borderWidth = 1.0
         }
     }
+    @IBOutlet weak var commentDuplicateView: BindableTextView!
+    
     @IBOutlet weak var salaryRangeSlider: UISlider!
     
     @IBOutlet weak var selectedSalaryRangeLabel: UILabel!
@@ -46,7 +48,9 @@ class ViewController: UIViewController {
         isCurrentEmployerSwitch.bind(with: viewModel.isCurrentEmployer)
         yearsOfExperienceStepper.bind(with: viewModel.yearsOfExperience)
         salaryRangeSlider.bind(with: viewModel.approxSalary)
+        
         commentsView.bind(with: viewModel.comments)
+        commentDuplicateView.bind(with: viewModel.comments)
         
         selectedSalaryRangeLabel.observe(for: viewModel.approxSalary) {
             [unowned self](_) in
@@ -76,6 +80,11 @@ class ViewController: UIViewController {
     
     @IBAction func submitFormTapped(_ sender: Any) {
         
+    }
+    
+    @IBAction func clearCommentBinding(_ sender: Any) {
+        commentsView.unbind(from: viewModel.comments)
+        commentDuplicateView.unbind(from: viewModel.comments)
     }
 }
 

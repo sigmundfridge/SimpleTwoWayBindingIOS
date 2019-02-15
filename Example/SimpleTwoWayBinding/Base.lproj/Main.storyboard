@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nn7-fC-Dfq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nn7-fC-Dfq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -94,7 +93,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.25" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ANS-Ob-KXO" customClass="BindableTextView" customModule="SimpleTwoWayBinding">
-                                <rect key="frame" x="26" y="350" width="323" height="257"/>
+                                <rect key="frame" x="26" y="350" width="323" height="124.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -108,17 +107,33 @@
                                     <segue destination="BRE-KP-nhv" kind="show" identifier="showSubmission" id="Vjq-es-9Bi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJo-f3-sLz">
+                                <rect key="frame" x="238" y="318.5" width="111" height="30"/>
+                                <state key="normal" title="Remove Binding"/>
+                                <connections>
+                                    <action selector="clearCommentBinding:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eyc-Cz-ph6"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.25" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cYt-8j-O1n" customClass="BindableTextView" customModule="SimpleTwoWayBinding">
+                                <rect key="frame" x="26" y="482.5" width="323" height="124.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="r7b-lW-x0t" firstAttribute="top" secondItem="7ys-S2-mQc" secondAttribute="bottom" constant="8" id="0OW-nk-8y7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7ys-S2-mQc" secondAttribute="trailing" constant="10" id="0pV-ZD-4fP"/>
+                            <constraint firstItem="cYt-8j-O1n" firstAttribute="leading" secondItem="ANS-Ob-KXO" secondAttribute="leading" id="2ci-D9-Lxd"/>
                             <constraint firstItem="8EP-7m-RKV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="6ey-e4-OIs"/>
                             <constraint firstItem="jmf-uk-Tqb" firstAttribute="top" secondItem="8EP-7m-RKV" secondAttribute="bottom" constant="8" id="7kj-Xd-TEV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GzD-ej-Ugh" secondAttribute="trailing" constant="10" id="AJm-Ir-dJX"/>
                             <constraint firstItem="GzD-ej-Ugh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="EIZ-hw-nit"/>
                             <constraint firstItem="jmf-uk-Tqb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="EPH-g3-x8e"/>
                             <constraint firstItem="7ys-S2-mQc" firstAttribute="top" secondItem="jmf-uk-Tqb" secondAttribute="bottom" constant="8" id="FRS-0a-8TF"/>
+                            <constraint firstItem="fJo-f3-sLz" firstAttribute="centerY" secondItem="mHn-3x-o0c" secondAttribute="centerY" id="FVj-kK-brK"/>
                             <constraint firstItem="gFU-Lt-WSJ" firstAttribute="centerY" secondItem="cCZ-9E-S7W" secondAttribute="centerY" id="G7K-9o-chj"/>
                             <constraint firstItem="r7b-lW-x0t" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gFU-Lt-WSJ" secondAttribute="trailing" constant="10" id="H1m-BG-cb5"/>
                             <constraint firstItem="ANS-Ob-KXO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="K4b-Dn-3LY"/>
@@ -126,6 +141,7 @@
                             <constraint firstItem="8EP-7m-RKV" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="LCt-Zt-R2o"/>
                             <constraint firstItem="ANS-Ob-KXO" firstAttribute="top" secondItem="mHn-3x-o0c" secondAttribute="bottom" constant="8" id="LaR-Am-uH9"/>
                             <constraint firstItem="SuZ-rZ-A2Z" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="Nio-2p-XRf"/>
+                            <constraint firstItem="cYt-8j-O1n" firstAttribute="top" secondItem="ANS-Ob-KXO" secondAttribute="bottom" constant="8" id="QOx-aF-vfc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ANS-Ob-KXO" secondAttribute="trailing" constant="10" id="Sj6-l4-RVV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Gi-F5-9kc" secondAttribute="trailing" constant="10" id="UA8-zU-iU5"/>
                             <constraint firstItem="ogn-jE-Kug" firstAttribute="top" secondItem="SuZ-rZ-A2Z" secondAttribute="bottom" id="UdE-xJ-3Zb"/>
@@ -135,10 +151,14 @@
                             <constraint firstItem="7ys-S2-mQc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3qD-aB-8ry" secondAttribute="trailing" constant="10" id="a7h-ek-gmC"/>
                             <constraint firstItem="gFU-Lt-WSJ" firstAttribute="leading" secondItem="cCZ-9E-S7W" secondAttribute="trailing" constant="8" id="aLO-L9-vwZ"/>
                             <constraint firstItem="gFU-Lt-WSJ" firstAttribute="top" secondItem="jmf-uk-Tqb" secondAttribute="bottom" constant="8" id="bUJ-Ji-hEC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mHn-3x-o0c" secondAttribute="trailing" constant="10" id="dgy-4I-hBU"/>
+                            <constraint firstItem="cYt-8j-O1n" firstAttribute="bottom" secondItem="4Gi-F5-9kc" secondAttribute="top" constant="-10" id="eUu-bl-R2b"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4Gi-F5-9kc" secondAttribute="bottom" constant="20" id="fpZ-2y-HZj"/>
                             <constraint firstItem="cCZ-9E-S7W" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="fzG-lk-9Vy"/>
+                            <constraint firstItem="cYt-8j-O1n" firstAttribute="height" secondItem="ANS-Ob-KXO" secondAttribute="height" id="i75-hh-D78"/>
+                            <constraint firstItem="fJo-f3-sLz" firstAttribute="trailing" secondItem="r7b-lW-x0t" secondAttribute="trailing" id="iX7-Qz-z4V"/>
+                            <constraint firstItem="cYt-8j-O1n" firstAttribute="trailing" secondItem="ANS-Ob-KXO" secondAttribute="trailing" id="kq4-9N-dta"/>
                             <constraint firstItem="czQ-AJ-P6w" firstAttribute="top" secondItem="cCZ-9E-S7W" secondAttribute="bottom" constant="20" id="lyt-Tq-iBv"/>
+                            <constraint firstItem="cYt-8j-O1n" firstAttribute="centerX" secondItem="ANS-Ob-KXO" secondAttribute="centerX" id="n2d-tJ-aFB"/>
                             <constraint firstItem="GzD-ej-Ugh" firstAttribute="top" secondItem="SuZ-rZ-A2Z" secondAttribute="bottom" id="neR-yn-6HO"/>
                             <constraint firstItem="czQ-AJ-P6w" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="ng2-8I-ohi"/>
                             <constraint firstItem="cCZ-9E-S7W" firstAttribute="top" secondItem="3qD-aB-8ry" secondAttribute="bottom" constant="8" id="p19-5w-W8r"/>
@@ -149,14 +169,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="jmf-uk-Tqb" secondAttribute="trailing" constant="10" id="rsB-ao-mXd"/>
                             <constraint firstItem="4Gi-F5-9kc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="sRp-qq-BKm"/>
                             <constraint firstItem="ogn-jE-Kug" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="szX-nx-8HB"/>
+                            <constraint firstItem="fJo-f3-sLz" firstAttribute="leading" secondItem="mHn-3x-o0c" secondAttribute="trailing" constant="-111" id="unT-fm-P58"/>
                             <constraint firstItem="SuZ-rZ-A2Z" firstAttribute="top" secondItem="czQ-AJ-P6w" secondAttribute="bottom" constant="8" id="wE7-d1-Alj"/>
                             <constraint firstItem="3qD-aB-8ry" firstAttribute="top" secondItem="jmf-uk-Tqb" secondAttribute="bottom" constant="8" id="xKc-fK-JBo"/>
-                            <constraint firstItem="4Gi-F5-9kc" firstAttribute="top" secondItem="ANS-Ob-KXO" secondAttribute="bottom" constant="10" id="yMt-M3-K67"/>
                             <constraint firstItem="mHn-3x-o0c" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="zki-uj-Nfh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zLu-kx-84m"/>
                     <connections>
+                        <outlet property="commentDuplicateView" destination="cYt-8j-O1n" id="hhz-Aq-Uh4"/>
                         <outlet property="commentsView" destination="ANS-Ob-KXO" id="N8I-i8-cxk"/>
                         <outlet property="companyField" destination="jmf-uk-Tqb" id="Pfs-Ws-IL0"/>
                         <outlet property="isCurrentEmployerSwitch" destination="r7b-lW-x0t" id="so7-Ov-N00"/>
@@ -169,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="447" y="261"/>
+            <point key="canvasLocation" x="445.60000000000002" y="260.41979010494754"/>
         </scene>
         <!--Submission View Controller-->
         <scene sceneID="edD-3Z-2Vo">
